@@ -52,10 +52,6 @@
     nerd-fonts.jetbrains-mono
   ];
 
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-  };
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -78,10 +74,7 @@
   # services.libinput.enable = true;
 
   # flakes
-  # nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Install firefox.
-  programs.firefox.enable = true;
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -90,7 +83,7 @@
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     vim wget git efibootmgr fastfetch lm_sensors nvtopPackages.full
-    btop mokutil tree
+    btop mokutil tree wl-clipboard
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -132,7 +125,13 @@
   #
   # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
   # and migrated your data accordingly.
-  #
+  
+  nix.gc = {
+  automatic = true;
+  dates = "weekly";
+  options = "--delete-older-than 4d"; # Deletes files from older generations
+  };
+
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "26.05"; # Did you read the comment?
 
