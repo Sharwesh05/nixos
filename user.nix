@@ -1,5 +1,6 @@
 # User Configuration
 { config, pkgs, zen-browser, ... }:
+
 {
   networking.hostName = "Sharwesh"; # Define your hostname.
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -13,7 +14,7 @@
       gnome-extension-manager pavucontrol
       gnome-tweaks gh microsoft-edge
       kitty zen-browser obsidian
-      junction opencode
+      junction opencode nodejs_26
     ];
   };
   programs.starship = {

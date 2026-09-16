@@ -10,6 +10,7 @@
       ./grub.nix
       ./user.nix
       ./nvidia.nix
+      ./services.nix
       ./hardware-configuration.nix
       ./packages/linux-omen-module/module.nix
     ];

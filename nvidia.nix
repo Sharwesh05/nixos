@@ -1,4 +1,5 @@
 { config, lib, pkgs, modulesPath, ... }:
+
 {
   # Configure the NVIDIA driver
   services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
