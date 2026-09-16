@@ -2,14 +2,16 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, pkgs, ... }:
+{ config, pkgs, omen-tools, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
       ./grub.nix
       ./user.nix
+      ./nvidia.nix
+      ./hardware-configuration.nix
+      ./packages/linux-omen-module/module.nix
     ];
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -24,20 +26,8 @@
   time.timeZone = "Asia/Kolkata";
   time.hardwareClockInLocalTime = true;
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_IN";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_IN";
-    LC_IDENTIFICATION = "en_IN";
-    LC_MEASUREMENT = "en_IN";
-    LC_MONETARY = "en_IN";
-    LC_NAME = "en_IN";
-    LC_NUMERIC = "en_IN";
-    LC_PAPER = "en_IN";
-    LC_TELEPHONE = "en_IN";
-    LC_TIME = "en_IN";
-  };
-
+  i18n.defaultLocale = "en_US.UTF-8";
+  
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
@@ -83,7 +73,7 @@
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     vim wget git efibootmgr fastfetch lm_sensors nvtopPackages.full
-    btop mokutil tree wl-clipboard
+    btop mokutil tree wl-clipboard omen-tools python3
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -125,6 +115,8 @@
   #
   # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
   # and migrated your data accordingly.
+  
+  boot.tmp.cleanOnBoot = true;
   
   nix.gc = {
   automatic = true;

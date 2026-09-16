@@ -12,12 +12,26 @@
       vscode obs-studio discord 
       gnome-extension-manager pavucontrol
       gnome-tweaks gh microsoft-edge
-      opencode kitty zen-browser
-      junction
+      kitty zen-browser obsidian
+      junction opencode
     ];
   };
+  programs.starship = {
+    enable = true;
+    # Configuration written to ~/.config/starship.toml
+    settings = {
+      # add_newline = false;
 
-  # environment.sessionVariables = {
-  #   NIXOS_OZONE_WL = "1";
-  # };
+      # character = {
+      #   success_symbol = "[➜](bold green)";
+      #   error_symbol = "[➜](bold red)";
+      # };
+
+      # package.disabled = true;
+    };
+  };
+  environment.sessionVariables = {
+    # NIXPKGS_OPENCODE_DISABLE_LEGACY_DB_WORKAROUND = "1";
+    # NIXOS_OZONE_WL = "1";
+  };
 }
