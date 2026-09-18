@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     linux-omen-module = {
-      url = "github:Sharwesh05/linux-omen-module/74471ebdeec1a1292d6688ef2abefe2896971485";
+      url = "github:Sharwesh05/linux-omen-module/a6d5de8ce5b6ada973b8527eed5041f779b7b306";
       flake = false;
     };
   };

@@ -3,17 +3,17 @@
     "linux-omen-module": {
       "flake": false,
       "locked": {
-        "lastModified": 1789571101,
-        "narHash": "sha256-DX6R05f6UhjOsaF2BgOhY3gr9uJRjAhfXbOB99rcgHI=",
+        "lastModified": 1789713131,
+        "narHash": "sha256-s3o8PJuq56aQ9jaINo1i4c2BOmtUUBOV7I0YwSGoCB8=",
         "owner": "Sharwesh05",
         "repo": "linux-omen-module",
-        "rev": "74471ebdeec1a1292d6688ef2abefe2896971485",
+        "rev": "a6d5de8ce5b6ada973b8527eed5041f779b7b306",
         "type": "github"
       },
       "original": {
         "owner": "Sharwesh05",
         "repo": "linux-omen-module",
-        "rev": "74471ebdeec1a1292d6688ef2abefe2896971485",
+        "rev": "a6d5de8ce5b6ada973b8527eed5041f779b7b306",
         "type": "github"
       }
     },

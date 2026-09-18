@@ -15,6 +15,7 @@
       gnome-tweaks gh microsoft-edge
       kitty zen-browser obsidian
       junction opencode nodejs_26
+      docker cloudflare-warp
     ];
   };
   programs.starship = {
@@ -34,5 +35,9 @@
   environment.sessionVariables = {
     # NIXPKGS_OPENCODE_DISABLE_LEGACY_DB_WORKAROUND = "1";
     # NIXOS_OZONE_WL = "1";
+  };
+
+  programs.bash.shellAliases = {
+    disk = "cd /run/media/sharwesh/Disk";
   };
 }

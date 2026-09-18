@@ -60,16 +60,16 @@ in
     };
   };
 
-  systemd.timers.Omenhsaclient = {
-    description = "Run HP OMEN HSA Client periodically";
+  # systemd.timers.Omenhsaclient = {
+  #   description = "Run HP OMEN HSA Client periodically";
 
-    wantedBy = [ "timers.target" ];
+  #   wantedBy = [ "timers.target" ];
 
-    timerConfig = {
-      Unit = "Omenhsaclient.service";
-      OnBootSec = "10s";
-      OnUnitInactiveSec = "110s";
-      AccuracySec = "3s";
-    };
-  };
+  #   timerConfig = {
+  #     Unit = "Omenhsaclient.service";
+  #     OnBootSec = "10s";
+  #     OnUnitInactiveSec = "110s";
+  #     AccuracySec = "3s";
+  #   };
+  # };
 }

@@ -25,16 +25,20 @@
     limine ={
       enable = true;
       efiSupport = true;
-      efiInstallAsRemovable = true;
+      # efiInstallAsRemovable = true;
       secureBoot.enable = true; 
       enrollConfig = true;
       panicOnChecksumMismatch = true;
       maxGenerations = 5;
 
       extraEntries = ''
-        /Windows Boot Manager
+        /Windows 11
+          comment: Windows Boot Manager
           protocol: efi
           path: uuid(b999a979-7f1d-4f0d-9328-1975de4b82a5):/EFI/Microsoft/Boot/bootmgfw.efi
+      '';
+      extraConfig = ''
+        timeout: 15
       '';
 
     };
