@@ -3,6 +3,7 @@
   stdenv,
   kernel,
   linux-omen-module,
+  zstd,
 }:
 
 stdenv.mkDerivation {
@@ -11,7 +12,9 @@ stdenv.mkDerivation {
 
   src = "${linux-omen-module}/hpomen-1.0";
 
-  nativeBuildInputs = kernel.moduleBuildDependencies;
+  nativeBuildInputs = kernel.moduleBuildDependencies ++ [
+    zstd
+  ];
 
   makeFlags = [
     "KVERSION=${kernel.modDirVersion}"
@@ -21,8 +24,8 @@ stdenv.mkDerivation {
   installPhase = ''
     mkdir -p $out/lib/modules/${kernel.modDirVersion}/extra
 
-    cp hpomen.ko \
-      $out/lib/modules/${kernel.modDirVersion}/extra/
+    zstd -T0 hpomen.ko \
+      -o $out/lib/modules/${kernel.modDirVersion}/extra/hpomen.ko.zst
   '';
 
   meta = {

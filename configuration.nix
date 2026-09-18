@@ -7,7 +7,8 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./grub.nix
+      # ./grub.nix
+      ./limine.nix
       ./user.nix
       ./nvidia.nix
       ./services.nix
@@ -74,7 +75,8 @@
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     vim wget git efibootmgr fastfetch lm_sensors nvtopPackages.full
-    btop mokutil tree wl-clipboard omen-tools python3
+    btop mokutil tree wl-clipboard omen-tools python3 tmux openssl
+    sbctl limine-full
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
