@@ -26,9 +26,7 @@
         builtins.fromJSON
           (builtins.readFile ./packages/source.json);
 
-      # -------------------------
       # Zen Browser
-      # -------------------------
       zenSource = sources."zen-browser";
 
       zenSourceForSystem =
@@ -46,6 +44,7 @@
           inherit zen-browser-unwrapped;
         };
       
+      # Omen Tools
       omen-tools =
         pkgs.callPackage ./packages/linux-omen-module/tools.nix {
           inherit linux-omen-module;

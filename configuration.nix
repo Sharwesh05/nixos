@@ -12,6 +12,7 @@
       ./user.nix
       ./nvidia.nix
       ./services.nix
+      ./auto-update.nix
       ./hardware-configuration.nix
       ./packages/linux-omen-module/module.nix
     ];
@@ -57,9 +58,74 @@
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
+    wireplumber.enable = true;
 
-    # Use the WirePlumber session manager
-    #wireplumber.enable = true;
+    extraConfig.pipewire."50-custom.conf" = {
+      # Lower the default quantum for reduced latency and crisper audio
+      context.properties = {
+        "default.clock.quantum" = 256;
+        "default.clock.min-quantum" = 64;
+        "default.clock.max-quantum" = 1024;
+        "default.clock.rate" = 48000;
+        "default.clock.allowed-rates" = [ 44100 48000 96000 ];
+      };
+
+      # Clean voice / improved mic quality via echo cancellation + noise suppression
+      context.modules = [
+        {
+          name = "libpipewire-module-filter-chain";
+          args = {
+            "node.description" = "Echo Cancellation source";
+            "media.name" = "Echo Cancellation source";
+            "filter.graph" = {
+              nodes = [
+                {
+                  type = "ladspa";
+                  name = "echo_cancel";
+                  plugin = "libwebrtc_audioproc";
+                  label = "echo_cancel";
+                  control = {
+                    "voice_detection" = 1;
+                    "extended_filter" = 1;
+                    "noise_suppression" = 3;
+                    "high_pass_filter" = 1;
+                  };
+                }
+              ];
+            };
+            "capture.props" = {
+              "node.name" = "capture_echo_cancel_source";
+              "node.passive" = true;
+              "node.dont-reconnect" = true;
+              "audio.rate" = 48000;
+              "audio.position" = [ "FL" "FR" ];
+              "media.class" = "Audio/Source";
+            };
+            "playback.props" = {
+              "node.name" = "playback_echo_cancel_source";
+              "node.passive" = true;
+              "node.dont-reconnect" = true;
+              "audio.position" = [ "FL" "FR" ];
+              "media.class" = "Audio/Sink";
+            };
+            "audio.channels" = 2;
+            "audio.rate" = 48000;
+          };
+        }
+      ];
+    };
+
+    wireplumber.extraConfig."90-bluetooth.conf".monitor.bluez.rules = [
+      {
+        matches = [{ "device.name" = "~bluez_card.*"; }];
+        actions = {
+          "update-props" = {
+            "bluez5.enable-hw-volume" = true;
+            "bluez5.roles" = [ "a2dp_sink" "a2dp_source" ];
+          };
+        };
+      }
+    ];
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -76,7 +142,7 @@
   environment.systemPackages = with pkgs; [
     vim wget git efibootmgr fastfetch lm_sensors nvtopPackages.full
     btop mokutil tree wl-clipboard omen-tools python3 tmux openssl
-    sbctl limine-full
+    sbctl limine-full nix-ld
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

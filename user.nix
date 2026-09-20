@@ -15,7 +15,7 @@
       gnome-tweaks gh microsoft-edge
       kitty zen-browser obsidian
       junction opencode nodejs_26
-      docker cloudflare-warp
+      docker cloudflare-warp claude-code
     ];
   };
   programs.starship = {
