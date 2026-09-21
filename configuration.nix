@@ -10,6 +10,7 @@
       # ./grub.nix
       ./limine.nix
       ./user.nix
+      ./hyprland.nix
       ./nvidia.nix
       ./services.nix
       ./auto-update.nix
@@ -31,7 +32,7 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   
-  # Enable the GNOME Desktop Environment.
+  # Enable the GNOME Desktop Environment (kept as failsafe session).
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
@@ -136,6 +137,8 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  programs.nix-ld.enable = true;
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).

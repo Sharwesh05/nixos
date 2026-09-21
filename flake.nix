@@ -63,7 +63,7 @@
           inherit system;
 
           specialArgs = {
-            inherit 
+            inherit
               zen-browser 
               linux-omen-module
               omen-tools;
