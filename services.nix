@@ -24,4 +24,7 @@
   # Disable hibernate-related targets
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
+
+  #Warp
+  services.cloudflare-warp.enable = true;
 }
