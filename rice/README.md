@@ -14,9 +14,9 @@ Installed by `../rice.nix` to `/etc/xdg/quickshell/rice`; run as `rice` (`qs -c 
 | **Dynamic island** | Pill under the clock. It morphs for media (album-art palette, cava spectrum, synced LRCLIB lyrics), volume/brightness, and notification previews, and expands into a hub with Media / Focus (pomodoro, calendar) / Tools tabs. |
 | **Launcher** | Apps as a list or grid, ranked by usage, with desktop actions. Prefixes: `/` files, `;` clipboard (text and image preview), `.` emoji, `:` wallpapers, `>` commands, `=` calculator, units and currency, `?` web, `!` keys & help (every keybind, searchable). |
 | **Sidebar (right)** | Quick tiles, a quick-actions row (screenshot, record, colour picker, OCR, clipboard, emoji), sliders, media, calendar, notifications, and Wi-Fi / Bluetooth pages. |
-| **Dashboard (left)** | Open-Meteo weather: animated sky, hourly chart, 7-day forecast, AQI/UV/wind/sun/moon cards. Also Info and an app Drawer. |
+| **Dashboard (left)** | Open-Meteo weather: animated sky, hourly chart, 7-day forecast, AQI/UV/wind/sun/moon cards. Also an Info tab. |
 | **Dock** | Pinned and running apps, magnify on hover, window previews, drag to reorder, a Downloads stack, autohide. |
-| **Desktop widgets** | Cookie clock, weather, liquid CPU/RAM, sparklines, network, storage, battery, calendar and to-do cards on a snapping grid, with an edit mode. |
+| **Desktop widgets** | Cookie clock, weather, liquid CPU/RAM, sparklines, network, storage, battery, calendar, to-do and cava visualizer cards on a snapping grid, with an edit mode. |
 | **Capture** | Region/window/screen screenshots, OCR, colour picker, screen and audio recording. |
 | **Settings app** | 15 pages: General, Bar, Appearance, Wallpaper, Network, Bluetooth, Audio mixer, Displays, Night light, Idle, Dock, Default apps, Autostart, Shortcuts, About. |
 | **System** | Notifications, OSD, lock screen (PAM `rice-lock`), power menu, polkit agent, idle lock/DPMS/suspend, night light (hyprsunset), caps/num-lock OSD. |

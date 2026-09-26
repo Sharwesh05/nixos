@@ -24,8 +24,7 @@ to open **Keys & help**. It's a searchable list of every Hyprland bind, launcher
 | Super + / | Launcher: keys & help (this list, searchable) | `spotlight help` |
 | Super + W | Launcher: wallpapers | `launcher wallpapers` |
 | Super + N | Right sidebar (quick settings, notifications) | `sidebar toggle` |
-| Super + A | Left dashboard (weather / info / drawer) | `dashboard toggle` |
-| Super + Shift + A | Dashboard: app drawer | `dashboard openTab drawer` |
+| Super + A | Left dashboard (weather / info) | `dashboard toggle` |
 | Super + I | Island hub | `island toggle` |
 | Super + Shift + M | Island: media + lyrics | `island media` |
 | Super + Shift + P | Island: pomodoro timer | `island timer` |

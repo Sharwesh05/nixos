@@ -3,6 +3,7 @@ kitty/light-theme.auto.conf
 kitty/no-preference-theme.auto.conf
 kitty/*.pre-rice
 gtk-3.0/rice-colors.css
+gtk-3.0/settings.ini
 gtk-4.0/rice-colors.css
 qt5ct/colors/
 qt6ct/colors/

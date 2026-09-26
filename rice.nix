@@ -4,9 +4,9 @@
 # notifications, OSD, screenshot/recording tools, settings app, polkit agent,
 # lock screen, idle/night light, and matugen theming of the shell + apps.
 #
-# The QML lives in ./rice and is installed to /etc/xdg/quickshell/rice, so it
-# runs as `qs -c rice` (or the `rice` wrapper below). Edits need a rebuild; for
-# live-reload while hacking use `qs -p ~/Modules/nixos/rice` instead.
+# The QML lives in ./rice and runs as `qs -c rice` (the `rice` command below).
+# Quickshell looks in ~/.config/quickshell first: rice/Dotfiles/symlink links
+# ~/.config/quickshell/rice to this repo, so edits apply live. 
 #
 # Hyprland itself is configured in ./rice/Dotfiles/hypr (Lua), linked into
 # ~/.config by rice/Dotfiles/symlink along with the other app configs.

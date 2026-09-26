@@ -48,3 +48,13 @@ hl.window_rule({
     float = true,
 })
 
+
+-- Junction (the "open link with…" browser chooser): a small popup, so float
+-- it centred instead of tiling it.
+hl.window_rule({
+    name  = "junction-popup",
+    match = { class = "^re\\.sonny\\.Junction$" },
+
+    float  = true,
+    center = true,
+})

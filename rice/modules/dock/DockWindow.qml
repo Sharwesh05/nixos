@@ -302,7 +302,7 @@ PanelWindow {
         if (actions.length) {
             rows.push({ kind: "sep" });
             actions.slice(0, 8).forEach(a => rows.push({ kind: "item", icon: "bolt", appIcon: a.icon || "",
-                                                         label: a.name, run: () => a.execute() }));
+                                                         label: a.name, run: () => Apps.run(a.command) }));
         }
         rows.push({ kind: "sep" });
         if (entry)

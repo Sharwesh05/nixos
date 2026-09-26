@@ -49,7 +49,7 @@ const IPC_NAMES = {
     "spotlight.mode": "Launcher mode",
     "dashboard.toggle": "Dashboard (weather, info)",
     "dashboard.open": "Dashboard",
-    "dashboard.openTab": "Dashboard app drawer",
+    "dashboard.openTab": "Dashboard tab",
     "island.toggle": "Island hub",
     "island.media": "Island media and lyrics",
     "island.timer": "Pomodoro timer",

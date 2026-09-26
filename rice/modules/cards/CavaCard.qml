@@ -27,8 +27,9 @@ CardFrame {
 
     Item {
         id: area
-        Layout.fillWidth: true
-        Layout.fillHeight: true
+        // CardFrame's body is a plain Item, so fill it with anchors.
+        anchors.fill: parent
+        anchors.topMargin: Tokens.space.xs
 
         // Spectrum has 16 bands; each is drawn as a pair of bars, the second
         // blended towards the next band so the curve looks smooth.

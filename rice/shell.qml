@@ -33,6 +33,7 @@ ShellRoot {
         // startup (IPC targets, notification server, idle/night light,
         // polkit agent, weather cache, first-run theming).
         Panels.ready;
+        Avatar.path;
         Notifs.popups;
         Ecosystem.enabled;
         Idle.enabled;
@@ -64,6 +65,7 @@ ShellRoot {
     Dashboard {}
     NotificationPopups {}
     Osd {}
+    ReloadToast {}
     LockKeysOsd {}
     CaptureOverlay {}
     PowerMenu {}

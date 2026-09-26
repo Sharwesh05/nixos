@@ -29,7 +29,6 @@ hl.bind(mainMod .. " + SHIFT + F",      ipc("spotlight", "files"))
 hl.bind(mainMod .. " + SLASH",          ipc("spotlight", "help"))       -- every keybind, searchable
 hl.bind(mainMod .. " + N",              ipc("sidebar", "toggle"))
 hl.bind(mainMod .. " + A",              ipc("dashboard", "toggle"))
-hl.bind(mainMod .. " + SHIFT + A",      ipc("dashboard", "openTab drawer"))
 hl.bind(mainMod .. " + I",              ipc("island", "toggle"))
 hl.bind(mainMod .. " + SHIFT + M",      ipc("island", "media"))
 hl.bind(mainMod .. " + SHIFT + P",      ipc("island", "timer"))
