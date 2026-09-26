@@ -17,7 +17,7 @@ rice ipc call <target> <function> [args…]
 | `clipboard` | `count` `refresh` `wipe` |
 | `sidebar` | `toggle` |
 | `dashboard` | `toggle` `open` `close` `openTab <weather\|info\|drawer>` `current` `isOpen` |
-| `island` | `toggle` `open <media\|focus\|tools>` `close` `media` `timer` `pomodoro` `stopwatch` `tools` `tool <id>` `lyrics` `osd <kind>` `enable <bool>` `mode` |
+| `island` | `toggle` `open <media\|focus\|tools\|notifications>` `close` `media` `timer` `pomodoro` `notifications` `tools` `tool <id>` `lyrics` `osd <kind>` `enable <bool>` `mode` |
 | `settings` | `open` `toggle` `page <Name>` (General, Bar, Appearance, Wallpaper, Network, Bluetooth, Audio, Displays, NightLight, Idle, Dock, DefaultApps, Autostart, Shortcuts, About) |
 | `power` | `toggle` |
 | `lock` | `lock` `isLocked` |
@@ -32,6 +32,7 @@ rice ipc call <target> <function> [args…]
 | `nightlight` | `toggle` `enable` `disable` `setTemperature <kelvin>` `schedule <HH:mm> <HH:mm>` `unschedule` `status` |
 | `idle` | `toggle` `enable` `disable` `setLockAfter <s>` `setScreenOffAfter <s>` `setSuspendAfter <s>` `status` |
 | `shell` | `reload` |
+| `switcher` | `next` `prev` `commit` `cancel` |
 | `caffeine` | `toggle` |
 | `notifs` | `clear` `toggleDnd` |
 | `audio` | `up` `down` `mute` `micMute` |

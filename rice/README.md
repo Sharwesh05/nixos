@@ -11,7 +11,7 @@ Installed by `../rice.nix` to `/etc/xdg/quickshell/rice`; run as `rice` (`qs -c 
 | Area | What it does |
 |---|---|
 | **Bar** | Workspaces with a stretching indicator, the active window, clock, weather, media, CPU/RAM/temp rings, tray, recording indicator, status chip. It can sit at the top or bottom, floating or docked, and each module can be hidden. |
-| **Dynamic island** | Pill under the clock. It morphs for media (album-art palette, cava spectrum, synced LRCLIB lyrics), volume/brightness, and notification previews, and expands into a hub with Media / Focus (pomodoro, stopwatch, calendar) / Tools tabs. |
+| **Dynamic island** | Pill under the clock. It morphs for media (album-art palette, cava spectrum, synced LRCLIB lyrics), volume/brightness, and notification previews, and expands into a hub with Media / Focus (pomodoro, calendar) / Tools tabs. |
 | **Launcher** | Apps as a list or grid, ranked by usage, with desktop actions. Prefixes: `/` files, `;` clipboard (text and image preview), `.` emoji, `:` wallpapers, `>` commands, `=` calculator, units and currency, `?` web, `!` keys & help (every keybind, searchable). |
 | **Sidebar (right)** | Quick tiles, a quick-actions row (screenshot, record, colour picker, OCR, clipboard, emoji), sliders, media, calendar, notifications, and Wi-Fi / Bluetooth pages. |
 | **Dashboard (left)** | Open-Meteo weather: animated sky, hourly chart, 7-day forecast, AQI/UV/wind/sun/moon cards. Also Info and an app Drawer. |
@@ -45,8 +45,8 @@ rice ipc call wallpaper set ~/Pictures/Wallpapers/foo.jpg
 Wallpapers are read from `~/Pictures/Wallpapers` (you can change the folder in Settings → Wallpaper).
 State is stored in `~/.local/state/rice/`.
 
-`Dotfiles/` is the separate Dotfiles repo (Hyprland Lua, kitty, starship, and the generated app themes). It is ignored
-by this repo and linked into `~/.config` by `Dotfiles/symlink`.
+`Dotfiles/` holds the Hyprland Lua config, kitty, starship and the generated app themes. It is linked into
+`~/.config` by `Dotfiles/symlink`, including `~/.config/quickshell/rice`, so rice runs live from this repo.
 
 ## Layout
 

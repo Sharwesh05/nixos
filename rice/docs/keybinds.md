@@ -28,12 +28,21 @@ to open **Keys & help**. It's a searchable list of every Hyprland bind, launcher
 | Super + Shift + A | Dashboard: app drawer | `dashboard openTab drawer` |
 | Super + I | Island hub | `island toggle` |
 | Super + Shift + M | Island: media + lyrics | `island media` |
-| Super + Shift + P | Island: pomodoro / stopwatch | `island timer` |
+| Super + Shift + P | Island: pomodoro timer | `island timer` |
 | Super + Shift + T | Island: tools | `island tools` |
 | Super + , | Settings app | `settings open` |
 | Super + Esc | Power menu | `power toggle` |
 | Super + L | Lock screen | `lock lock` |
 | Super + Shift + R | Reload the shell | `shell reload` |
+
+### Window switcher
+
+| Keys | Action | IPC |
+|---|---|---|
+| Alt + Tab | Switch windows on this workspace (hold Alt, tap Tab) | `switcher next` |
+| Alt + Shift + Tab | Previous window | `switcher prev` |
+| Release Alt | Switch to the selected window | `switcher commit` |
+| Esc | Cancel | `switcher cancel` |
 
 ### Desktop and toggles
 
@@ -101,7 +110,7 @@ Screenshots are saved to `~/Pictures/Screenshots` and copied to the clipboard. R
 
 **Screen capture overlay**: drag to select, or click a window to snap to it. Enter confirms, arrow keys nudge the selection, Esc cancels.
 
-**Desktop edit mode**: drag a card to move it and use its corner to resize. Tab selects a card, arrow keys move it, Del removes it. Add / Reset / Done are in the toolbar.
+**Desktop edit mode**: drag a card to move it, × removes it. Tab selects a card, arrow keys move it, Del removes it. Add / Reset / Done are in the toolbar.
 
 **Power menu**: ← → or Tab choose, Enter runs the action, Esc closes.
 

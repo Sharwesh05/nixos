@@ -8,9 +8,9 @@
 # runs as `qs -c rice` (or the `rice` wrapper below). Edits need a rebuild; for
 # live-reload while hacking use `qs -p ~/Modules/nixos/rice` instead.
 #
-# Hyprland itself is configured in ./rice/Dotfiles/hypr (Lua, git-ignored here,
-# its own repo), linked to ~/.config/hypr.
-{ config, pkgs, ... }:
+# Hyprland itself is configured in ./rice/Dotfiles/hypr (Lua), linked into
+# ~/.config by rice/Dotfiles/symlink along with the other app configs.
+{ config, lib, pkgs, ... }:
 
 let
   # `rice` starts the shell; `rice ipc call <target> <fn>` talks to it.
@@ -30,7 +30,13 @@ in
     xwayland.enable = true;
   };
 
-  environment.etc."xdg/quickshell/rice".source = ./rice;
+  # The shell's QML, without the Dotfiles folder (that's linked into ~/.config
+  # by Dotfiles/symlink and isn't needed in the read-only system copy).
+  environment.etc."xdg/quickshell/rice".source = lib.cleanSourceWith {
+    name = "rice";
+    src = ./rice;
+    filter = path: type: !(lib.hasPrefix (toString ./rice/Dotfiles) path);
+  };
 
   environment.systemPackages = with pkgs; [
     # Compositor + session

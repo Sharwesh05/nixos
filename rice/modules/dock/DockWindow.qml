@@ -144,7 +144,7 @@ PanelWindow {
     function centerOf(id) { const s = slotOf(id); return bodyX + s.x + s.size / 2; }
 
     // ------------------------------------------------------------ visibility
-    readonly property HyprlandMonitor hyprMonitor: screen ? Hyprland.monitorFor(screen) : null
+    readonly property HyprlandMonitor hyprMonitor: HyprMonitors.forScreen(screen)
     readonly property bool hyprland: !!hyprMonitor && !!hyprMonitor.activeWorkspace
     readonly property bool overlapped: {
         if (!hyprland || !screen) return false;

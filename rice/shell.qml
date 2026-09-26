@@ -25,6 +25,7 @@ import qs.modules.polkit
 import qs.modules.power
 import qs.modules.settings
 import qs.modules.sidebar
+import qs.modules.switcher
 
 ShellRoot {
     Component.onCompleted: {
@@ -58,6 +59,7 @@ ShellRoot {
 
     DockHost {}
     Launcher {}
+    Switcher {}
     Sidebar {}
     Dashboard {}
     NotificationPopups {}
