@@ -1,6 +1,6 @@
 .pragma library
 
-// Every card the desktop canvas and CardsColumn can show. Sizes are in grid
+// Every card the desktop canvas can show. Sizes are in grid
 // cells (see CardStyle.cell / gap). `framed` cards draw a regular surface;
 // the others are free-standing shapes (cookie, tank, pill).
 var cards = [

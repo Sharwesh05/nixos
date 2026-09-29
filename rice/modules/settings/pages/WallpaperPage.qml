@@ -22,8 +22,11 @@ SettingsPage {
     property bool scanned: false
     property bool folderMissing: false
     property string query: ""
-    readonly property var shown: query === "" ? images
-        : images.filter(p => baseName(p).toLowerCase().includes(query.toLowerCase()))
+    readonly property var shown: {
+        if (query === "") return images;
+        const q = query.toLowerCase();
+        return images.filter(p => baseName(p).toLowerCase().includes(q));
+    }
 
     function baseName(p) { return String(p).split("/").pop(); }
     function prettyName(p) { return baseName(p).replace(/\.[^.]+$/, "").replace(/[-_]+/g, " "); }

@@ -41,6 +41,15 @@
         timeout: 15
       '';
 
+      # Readable menu on the laptop panel: Limine renders at native resolution
+      # with an 8x16 font, so double it, and let the (catppuccin-coloured)
+      # terminal fill the whole screen instead of a box with a margin.
+      style.graphicalTerminal = {
+        font.scale = "2x2";
+        margin = 0;
+        marginGradient = 0;
+      };
+
     };
     efi.canTouchEfiVariables = true;
   };

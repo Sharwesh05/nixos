@@ -314,14 +314,6 @@ esac`;
         return out;
     }
 
-    // Topmost window containing a global point, or null.
-    function windowAt(gx, gy) {
-        for (const w of windows)
-            if (gx >= w.x && gx < w.x + w.w && gy >= w.y && gy < w.y + w.h)
-                return w;
-        return null;
-    }
-
     property var pendingRecord: null
 
     JsonStore {

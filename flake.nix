@@ -10,13 +10,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     linux-omen-module = {
       url = "github:Sharwesh05/linux-omen-module/a6d5de8ce5b6ada973b8527eed5041f779b7b306";
       flake = false;
     };
   };
 
-  outputs = { self, nixpkgs, catppuccin, linux-omen-module, ... }:
+  outputs = { self, nixpkgs, catppuccin, home-manager, linux-omen-module, ... }:
     let
       system = "x86_64-linux";
 
@@ -78,6 +83,18 @@
           modules = [
             ./configuration.nix
             catppuccin.nixosModules.catppuccin
+
+            # Per-user settings: ./home.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                # Existing files in the way are renamed to *.hm-backup
+                backupFileExtension = "hm-backup";
+                users.sharwesh = import ./home.nix;
+              };
+            }
 
             {
               nixpkgs.overlays = [

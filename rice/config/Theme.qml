@@ -118,16 +118,27 @@ Singleton {
         printErrors: false
         onFileChanged: reload()
         onLoaded: {
+            const t = text();
+            if (t === root.schemeText) return;
             try {
-                root.generated = JSON.parse(text());
+                root.generated = JSON.parse(t);
+                root.schemeText = t;
             } catch (e) {
                 console.warn("rice: bad scheme file", e);
             }
         }
     }
 
+    // Last scheme text applied, so our own writes and identical regenerations
+    // don't reassign `generated` and re-evaluate every colour binding.
+    property string schemeText: ""
+
     function saveScheme(scheme) {
-        generated = scheme;
-        schemeFile.setText(JSON.stringify(scheme, null, 2));
+        const t = JSON.stringify(scheme, null, 2);
+        if (t !== schemeText) {
+            schemeText = t;
+            generated = scheme;
+        }
+        schemeFile.setText(t);
     }
 }

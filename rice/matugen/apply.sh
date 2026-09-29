@@ -44,7 +44,21 @@ import_line='@import url("rice-colors.css");'
 
 has() { [[ " ${RICE_TARGETS:-} " == *" $1 "* ]]; }
 live() { [[ "${RICE_LIVE:-0}" == 1 ]]; }
-generated() { [[ -f "$1" ]] && head -n 3 "$1" | grep -q "$marker"; }
+generated() {
+    [[ -f "$1" ]] || return 1
+    local line i
+    for i in 1 2 3; do
+        IFS= read -r line || [[ -n "$line" ]] || break
+        [[ "$line" == *"$marker"* ]] && return 0
+    done <"$1"
+    return 1
+}
+# Icon theme chosen in dconf, looked up once.
+dconf_icon_theme() {
+    [[ -n "${icon_theme+x}" ]] && return
+    icon_theme=$(gsettings get org.gnome.desktop.interface icon-theme 2>/dev/null)
+    icon_theme=${icon_theme//\'/}
+}
 
 restore() {
     case "$1" in
@@ -130,8 +144,12 @@ if has gtk; then
     gtk_theme=adw-gtk3
     [[ "$mode" == dark ]] && gtk_theme=adw-gtk3-dark
     mkdir -p "$conf/gtk-3.0"
-    printf '[Settings]\ngtk-theme-name=%s\ngtk-application-prefer-dark-theme=%s\n' \
-        "$gtk_theme" "$([[ "$mode" == dark ]] && echo 1 || echo 0)" >"$conf/gtk-3.0/settings.ini"
+    # Keep the icon theme chosen in dconf (home.nix sets it) in GTK 3 too.
+    dconf_icon_theme
+    prefer_dark=0
+    [[ "$mode" == dark ]] && prefer_dark=1
+    printf '[Settings]\ngtk-theme-name=%s\ngtk-icon-theme-name=%s\ngtk-application-prefer-dark-theme=%s\n' \
+        "$gtk_theme" "${icon_theme:-Adwaita}" "$prefer_dark" >"$conf/gtk-3.0/settings.ini"
     command -v gsettings >/dev/null && gsettings set org.gnome.desktop.interface gtk-theme "$gtk_theme" >/dev/null 2>&1
 fi
 
@@ -139,8 +157,9 @@ if has qt; then
     for v in 5 6; do
         ini="$conf/qt${v}ct/qt${v}ct.conf"
         [[ -f "$conf/qt${v}ct/colors/rice.conf" && ! -e "$ini" ]] || continue
-        printf '[Appearance]\ncustom_palette=true\ncolor_scheme_path=%s\nstyle=Fusion\n' \
-            "$conf/qt${v}ct/colors/rice.conf" >"$ini"
+        dconf_icon_theme
+        printf '[Appearance]\ncustom_palette=true\ncolor_scheme_path=%s\nicon_theme=%s\nstyle=Fusion\n' \
+            "$conf/qt${v}ct/colors/rice.conf" "${icon_theme:-Papirus-Dark}" >"$ini"
     done
 fi
 

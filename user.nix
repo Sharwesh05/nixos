@@ -16,22 +16,16 @@
       kitty zen-browser obsidian
       junction opencode nodejs_26
       docker cloudflare-warp claude-code
+      texliveFull onlyoffice-desktopeditors
     ];
   };
   programs.starship = {
     enable = true;
-    # Configuration written to ~/.config/starship.toml
-    settings = {
-      # add_newline = false;
-
-      # character = {
-      #   success_symbol = "[➜](bold green)";
-      #   error_symbol = "[➜](bold red)";
-      # };
-
-      # package.disabled = true;
-    };
   };
+
+  programs.steam.enable = true;
+
+  
   environment.sessionVariables = {
     # NIXPKGS_OPENCODE_DISABLE_LEGACY_DB_WORKAROUND = "1";
     # NIXOS_OZONE_WL = "1";

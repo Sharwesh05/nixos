@@ -34,7 +34,26 @@ PanelWindow {
 
     function swap() {
         const next = front === a ? b : a;
-        next.source = Wallpapers.current ? `file://${Wallpapers.current}` : "";
+        const url = Wallpapers.current ? `file://${Wallpapers.current}` : "";
+        // Switching back within the fade: the image is still loaded, so no status change will fire.
+        if (url && next.source.toString() === url && next.status === Image.Ready) front = next;
+        else next.source = url;
+    }
+
+    // Drop the faded-out image once the cross-fade is over so only one
+    // full-resolution wallpaper stays decoded in memory.
+    property string staleSource: ""
+    onFrontChanged: {
+        staleSource = (front === a ? b : a).source.toString();
+        release.restart();
+    }
+    Timer {
+        id: release
+        interval: Motion.duration.long * 2 + 100
+        onTriggered: {
+            const back = root.front === a ? b : a;
+            if (back.source.toString() === root.staleSource) back.source = "";
+        }
     }
 
     component Layer: Image {

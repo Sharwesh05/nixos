@@ -44,6 +44,7 @@
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
+    corefonts
   ];
 
   # Enable CUPS to print documents.

@@ -131,6 +131,7 @@ Item {
                 wrapMode: Text.Wrap
                 maximumLineCount: 2
                 color: root.critical ? Theme.errorContainerFg : Theme.surfaceVariantFg
+                linkColor: root.critical ? Theme.errorContainerFg : Theme.primary
             }
 
             RowLayout {

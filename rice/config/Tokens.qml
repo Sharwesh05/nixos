@@ -45,6 +45,5 @@ Singleton {
     }
 
     readonly property int sidebarWidth: 420
-    readonly property int launcherWidth: 620
     readonly property int notificationWidth: 380
 }
